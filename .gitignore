@@ -1,0 +1,6 @@
+*.O
+*.pro.user*
+.qmake*
+build*
+Makefile 
+SDLOpenGL
