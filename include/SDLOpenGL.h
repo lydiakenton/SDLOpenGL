@@ -14,6 +14,7 @@ public:
             int _height);
   void makeCurrent() const { SDL_GL_MakeCurrent(m_window,m_glContext); }
   void swapWindow() const { SDL_GL_SwapWindow(m_window); }
+  void pollEvent(SDL_Event &_event);
 
 private:
   int m_width;

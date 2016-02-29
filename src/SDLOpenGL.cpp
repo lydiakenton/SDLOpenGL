@@ -31,8 +31,10 @@ void SDLOpenGL::createGLContext()
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK,SDL_GL_CONTEXT_PROFILE_CORE);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION,4);
   SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION,3);
+
   SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS,1);
-  SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS,4);
+  SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES,4);
+
   SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE,16);
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER,1);
 
@@ -46,4 +48,10 @@ void SDLOpenGL::errorExit(const std::string &_msg) const
   std::cerr<<SDL_GetError()<<std::endl;
   SDL_Quit();
   exit(EXIT_FAILURE);
+}
+
+void SDLOpenGL::pollEvent(SDL_Event &_event)
+{
+  makeCurrent();
+  SDL_PollEvent(&_event);
 }
